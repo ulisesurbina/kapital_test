@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
-import { CountryData } from '../utils/CountryData';
+import { CountryData } from '../data/CountryData';
 import { AutoComplete } from "primereact/autocomplete";
 import starFilled from '@iconify-icons/mdi/star';
 import starOutline from '@iconify-icons/mdi/star-outline';
-import kapital from '../assets/kapital_logo.png'
+import kapital from '../assets/kapital_logo.png';
+import ClimateGraphics from './ClimateGraphics';
 
-function SearchCity({}) {  
+function SearchCity({ dateDay, hour }) {  
     const [searchCity, setSearchCity] = useState({});
     const [inputValueCity, setInputValueCity] = useState("");
     const [errorInput, setErrorInput] = useState("");
@@ -42,7 +43,7 @@ function SearchCity({}) {
     };
 
     useEffect(() => {
-        const KEY = 'da38ec99d438610f058d6f2a8b895e17'
+        const KEY = 'da38ec99d438610f058d6f2a8b895e17';
         const URL = `https://api.openweathermap.org/data/2.5/weather?q=${inputValueCity}&appid=${KEY}&lang=es&units=metric`;
         if (inputValueCity.trim() === "") {
             setSearchCity({});
@@ -71,6 +72,19 @@ function SearchCity({}) {
         }
     }, [searchCity]);
 
+    useEffect(() => {
+        const handleFavoritesUpdate = (e) => {
+            if (validCityData()) {
+                const updatedFavorites = e.detail.favorites;
+                setIsFavorite(updatedFavorites.some(fav => fav.name === searchCity.name));
+            }
+        };
+        window.addEventListener('favoritesUpdated', handleFavoritesUpdate);
+        return () => {
+            window.removeEventListener('favoritesUpdated', handleFavoritesUpdate);
+        };
+    }, [searchCity]);
+
     const handleAutoCompleteChange = (e) => {
         if (typeof e.value === 'string') {
             // El usuario está escribiendo
@@ -81,7 +95,7 @@ function SearchCity({}) {
             setInputValueCity(e.value.name);
             setSelectedCountry(e.value);
         }
-    };
+    };    
 
     const toggleFavorite = () => {
          if (!validCityData()) {
@@ -96,6 +110,9 @@ function SearchCity({}) {
         }
         localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
         setIsFavorite(!isFavorite);
+        window.dispatchEvent(new CustomEvent('favoritesUpdated', {
+            detail: { favorites: updatedFavorites }
+        }));
     };
 
     // console.log(searchCity);
@@ -123,10 +140,14 @@ function SearchCity({}) {
                     <h3><strong>Humedad:</strong> {searchCity.main?.humidity}%</h3>
                     <h3><strong>Velocidad del viento:</strong> {searchCity.wind?.speed} m/s</h3>
                     <h3><strong>Estado del tiempo:</strong> {searchCity.weather?.[0].description}</h3>
+                    <h3><strong>Día y hora actual:</strong> {dateDay} {hour}</h3>
                     <figure className='bg-[#32AC90] w-[40%]'>
                         <img className='w-full bg-[#32AC90]' src={searchCity.weather?.[0]?.icon ? `http://openweathermap.org/img/wn/${searchCity.weather[0].icon}@2x.png` : kapital} alt={searchCity.weather?.[0]?.description || "Kapital Logo"} />
                     </figure>
                 </div>
+            </section>
+            <section>
+                <ClimateGraphics keyword={inputValueCity} />
             </section>
         </div>
     )

@@ -1,51 +1,21 @@
-# React + Vite
+# Desarrollo Frontend de obtención de datos del Clima Consumiendo una API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
+Este proyecto implementa una aplicación web completa con arquitectura React/JSX, que incluye componentes reutilizables, gestión de estado, y utilidades para el manejo de activos estáticos. La aplicación está diseñada para mostrar el estado del clima en su posición actual, de las ciudades que se busquen en el input y muestra las gráficas de información referida a esa locación.
+Para poder detectar su ubicación actual debe permitir el servicio de geolocalización que aparece al cargar la página.
+Para marcar/desmarcar una ciudad o país como favorito se debe hacer click en la estrella ⭐, por lo que se guardaran en la sección de favoritos mediante el local storage, en el cual se tiene las opción de poder eliminar.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-# Proyecto de Aplicación Web Full-Stack
-
-Descripción
-Este proyecto implementa una aplicación web completa con arquitectura React/JSX, que incluye componentes reutilizables, gestión de estado, y utilidades para el manejo de activos estáticos. La aplicación está diseñada con una separación clara entre la lógica de presentación y los componentes de interfaz de usuario.
 
 # 📁 Estructura de Directorios
+```
 proyecto/
 ├── src/
-│   ├── components/          # Componentes React reutilizables
-│   │   ├── ui/             # Componentes base de UI
-│   │   └── Root/           # Componente raíz de la aplicación
-│   ├── utils/              # Utilidades y helpers
 │   ├── assets/             # Recursos estáticos (imágenes)
-│   └── pages/              # Páginas/vistas de la aplicación
+│   ├── components/         # Componentes React reutilizables
+│   ├── data/               # Información para librerias
+│   ├── utils/              # Utilidades y helpers
 └── public/                 # Archivos públicos
-
-# 🏗️ Flujo de la Aplicación
-
-Punto de Entrada: El usuario accede a través de un actor externo
-Capa de Presentación: HTML Entry Point maneja las solicitudes iniciales
-Capa de Aplicación:
-
-JS Entry Point React/JSX: Punto de entrada principal de React
-JS Entry & Bootstrap JavaScript: Inicialización y configuración de la aplicación
-
-
-Capa de Componentes:
-
-Root UI Component React/JSX: Componente raíz que orquesta la aplicación
-UI Components: Componentes reutilizables de interfaz de usuario
-
-
-Capa de Utilidades:
-
-Application Utilities JavaScript/JSX: Funciones auxiliares y utilidades
-Utility Modules: Módulos específicos de utilidades
-Static Assets CSS/Images: Recursos estáticos para estilos e imágenes
-
-
+```
 
 # 🚀 Características Principales
 
@@ -58,58 +28,38 @@ Gestión de Activos: Manejo optimizado de CSS e imágenes estáticas
 # 🛠️ Tecnologías Utilizadas
 Frontend: React, JSX, JavaScript ES6+, PrimeReact
 Estilos: CSS3, Tailwind
+Otras librerias: Chart.js, PrimeReact
+APIS públicas: Weather API de OpenWeather
 
 # 📦 Instalación
-bash# Clonar el repositorio
+
+## Clonar el repositorio
 git clone <https://github.com/ulisesurbina/kapital_test.git>
 
-# Navegar al directorio del proyecto
+## Navegar al directorio del proyecto
 cd nombre-del-proyecto
 
-# Instalar dependencias
+## Instalar dependencias
 npm install
 
-# Iniciar el servidor de desarrollo
-npm start
-🏃‍♂️ Scripts Disponibles
-bash# Desarrollo
-npm start          # Inicia el servidor de desarrollo
-npm run dev        # Modo desarrollo con hot reload
-
-# Construcción
-npm run build      # Construye la aplicación para producción
-npm run build:dev  # Construcción de desarrollo
-
-# Utilidades
-npm run lint       # Ejecuta el linter
-npm run test       # Ejecuta las pruebas
-npm run clean      # Limpia archivos temporales
-
-🤝 Contribución
-
-Fork el proyecto
-Crea una rama para tu feature (git checkout -b feature/AmazingFeature)
-Commit tus cambios (git commit -m 'Add some AmazingFeature')
-Push a la rama (git push origin feature/AmazingFeature)
-Abre un Pull Request
+## Iniciar el proyecto
+npm run dev
 
 # 🐛 Solución de Problemas
 
-Errores Comunes
+## Errores Comunes
 Error de dependencias: Ejecutar npm install para actualizar dependencias
 Problemas de build: Limpiar cache con npm run clean
 
 # 📄 Licencia
 Este proyecto está bajo la Licencia de Ulises Urbina Maldonado
-Se utilizaron APIS públicas: Weather API de OpenWeather
+Desarrollador Frontend
 
-# 👥 Equipo de Desarrollo
-
-Desarrollador Principal: Ulises Urbina Maldonado
-
-📞 Soporte
+# 📞 Soporte
 Para soporte técnico o preguntas:
 
+```
 📧 Email: ulisesurbinam@gmail.com
 🐛 GitHub: https://github.com/ulisesurbina
 📖 Link de proyecto en Netlify: https://kapitaltest.netlify.app/
+```
