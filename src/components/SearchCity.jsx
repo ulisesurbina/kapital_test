@@ -123,7 +123,7 @@ function SearchCity({ dateDay, hour }) {
                 <section className='flex justify-center items-center w-[100%] sm:w-[80%] md:w-[65%] h-full gap-2 sm:gap-5 md:gap-8'>
                     <section className='flex flex-col gap-1 w-[50%]'>
                         {errorInput && <p className="text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)] text-red-600 mt-2">{errorInput}</p>}
-                        <AutoComplete className='text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)]' inputClassName="text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)] w-full px-4 py-2 border border-green-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" type="text" placeholder='Buscar...' field="name" value={selectedCountry || inputValueCity} suggestions={filteredCountries} completeMethod={search} onChange={handleAutoCompleteChange} />
+                        <AutoComplete className='text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)]' inputClassName="text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)] w-full px-4 py-2 border border-green-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" panelClassName='text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)] border rounded-md' type="text" placeholder='Buscar...' field="name" value={selectedCountry || inputValueCity} suggestions={filteredCountries} completeMethod={search} onChange={handleAutoCompleteChange} />
                     </section>
                     <div className='flex flex-col justify-start items-center w-[50%]'>
                         <h4 className='text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)] text-center'>Marcar como favorito</h4>

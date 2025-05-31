@@ -14,7 +14,7 @@ function App() {
     <div className='w-full h-full flex flex-col bg-[#E6F5F2] text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)]'>
       <SearchCity dateDay={dateDay} hour={hour} />
       <CurrentLocation dateDay={dateDay} hour={hour} />
-       <button onClick={() => setIsFavoritesOpen(true)} className='fixed right-4 top-15 bg-[#FCD700] px-4 py-2 rounded shadow hover:bg-[#155DCF] hover:text-white transition-all z-20'>
+       <button onClick={() => setIsFavoritesOpen(true)} className='fixed left-4 bottom-15 sm:left-auto sm:bottom-auto sm:right-4 sm:top-15 md:left-auto md:bottom-auto md:right-4 md:top-15  bg-[#FCD700] px-4 py-2 rounded shadow hover:bg-[#155DCF] hover:text-white transition-all z-20'>
         Ver favoritos
       </button>
       {isFavoritesOpen && (
