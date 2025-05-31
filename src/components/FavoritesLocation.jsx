@@ -69,31 +69,30 @@ function FavoritesLocation() {
   return (
     <div className='w-full flex flex-col p-4'>
       <div className='flex justify-between items-center mb-4'>
-        <h2 className='text-2xl font-bold'>Favoritos</h2>
+        <h2 className=''>Favoritos</h2>
         {favorites.length > 0 && (
           <button 
             onClick={clearAllFavorites}
             className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors'
           >
-            Limpiar todos
+            Borrar todos
           </button>
         )}
       </div>
 
       {favorites.length === 0 ? (
         <div className='text-center py-8'>
-          <p className='text-gray-500 text-lg'>No tienes ciudades favoritas aún</p>
-          <p className='text-gray-400'>Busca una ciudad y márcala como favorita</p>
+          <p className=''>No tienes ciudades favoritas aún</p>
+          <p className=''>Busca una ciudad y márcala como favorita</p>
         </div>
       ) : (
         <div className='space-y-3'>
           {favorites.map((city, index) => {
             const cityId = city.id || index;
-            const isExpanded = expandedItems.has(cityId);
+            const isExpanded = expandedItems.has(cityId);            
             
             return (
               <div key={cityId} className='border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-white overflow-hidden'>
-                {/* Header siempre visible */}
                 <div 
                   className='flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50 transition-colors'
                   onClick={() => toggleExpanded(cityId)}
@@ -101,10 +100,7 @@ function FavoritesLocation() {
                   <div className='flex items-center gap-3'>
                     <Icon icon={starFilled} width={20} height={20} className='text-yellow-400' />
                     <div>
-                      <h3 className='text-lg font-semibold text-blue-600'>{city.name}</h3>
-                      <p className='text-sm text-gray-500'>
-                        {city.sys?.country} • {Math.round(city.main?.temp || 0)}°C
-                      </p>
+                      <h3 className=''>{city.name}</h3>
                     </div>
                   </div>
                   
@@ -128,26 +124,23 @@ function FavoritesLocation() {
                   </div>
                 </div>
 
-                {/* Información detallada - solo visible cuando está expandido */}
                 {isExpanded && (
                   <div className='border-t border-gray-200 p-4 bg-gray-50'>
-                    <div className='flex justify-between items-start gap-4'>
-                      <div className='space-y-2 text-sm flex-1'>
-                        <div className='grid grid-cols-2 gap-x-4 gap-y-1'>
-                          <p><strong>Temperatura:</strong> {Math.round(city.main?.temp || 0)}°C</p>
-                          <p><strong>Sensación:</strong> {Math.round(city.main?.feels_like || 0)}°C</p>
-                          <p><strong>Min/Max:</strong> {Math.round(city.main?.temp_min || 0)}°C / {Math.round(city.main?.temp_max || 0)}°C</p>
-                          <p><strong>Humedad:</strong> {city.main?.humidity || 0}%</p>
-                          <p><strong>Presión:</strong> {city.main?.pressure || 0} hPa</p>
-                          <p><strong>Viento:</strong> {city.wind?.speed || 0} m/s</p>
-                          <p><strong>Visibilidad:</strong> {(city.visibility || 0) / 1000} km</p>
-                          <p><strong>Estado:</strong> {city.weather?.[0]?.description || 'N/A'}</p>
+                    <div className='flex justify-between items-center gap-4'>
+                      <div className='space-y-2 flex-1'>
+                        <div className='grid grid-cols-2 gap-x-4 gap-y-1 flex items-center'>
+                          <p><strong>Temperatura:</strong> {city.main?.temp}°C</p>
+                          <p><strong>Sensación:</strong> {city.main?.feels_like}°C</p>
+                          <p><strong>Temperatura Mínima</strong> {city.main?.temp_min}°C <br />
+                          <strong>Temperatura Máxima:</strong> {city.main?.temp_max}°C</p>
+                          <p><strong>Humedad:</strong> {city.main?.humidity}%</p>
+                          <p><strong>Presión:</strong> {city.main?.pressure} mmHg</p>
+                          <p><strong>Velocidad del viento:</strong> {city.wind?.speed} m/s</p>
+                          <p><strong>Dirección del viento:</strong> {city.wind.deg}°</p>
+                          <p><strong>Estado del tiempo:</strong> {city.weather?.[0]?.description || 'N/A'}</p>
                         </div>
-                        <p className='text-xs text-gray-500 mt-3'>
-                          <strong>Coordenadas:</strong> Lat: {city.coord?.lat?.toFixed(2)}, Lon: {city.coord?.lon?.toFixed(2)}
-                        </p>
-                        <p className='text-xs text-gray-400'>
-                          ID: {city.id} • Zona horaria: UTC{city.timezone ? (city.timezone/3600 > 0 ? '+' : '') + (city.timezone/3600) : '0'}
+                        <p className=''>
+                          <strong>Latitud:</strong>  {city.coord.lat}, <strong>Longitud:</strong> {city.coord.lon}
                         </p>
                       </div>
                       
@@ -159,7 +152,7 @@ function FavoritesLocation() {
                             alt={city.weather?.[0]?.description || "Weather icon"} 
                           />
                         </figure>
-                        <p className='text-xs text-gray-500 text-center font-medium'>
+                        <p className='text-center font-medium'>
                           {city.weather?.[0]?.main || 'N/A'}
                         </p>
                       </div>

@@ -29,7 +29,6 @@ function SearchCity({ dateDay, hour }) {
                     return country.name.toLowerCase().startsWith(event.query.toLowerCase());
                 });
             }
-
             setFilteredCountries(_filteredCountries);
         }, 250);
     }
@@ -135,6 +134,7 @@ function SearchCity({ dateDay, hour }) {
                 </section>
                 <div className="w-[50%] flex justify-center items-center flex-col gap-2">
                     <h3><strong>Ciudad:</strong> {inputValueCity}</h3>
+                    <h3><strong>Latitud:</strong> {searchCity.coord?.lat} <br /> <strong>Longitud:</strong> {searchCity.coord?.lon}</h3>
                     <h3><strong>Temperatura:</strong> {searchCity.main?.temp} °C</h3>
                     <h3><strong>Sensación térmica:</strong> {searchCity.main?.feels_like} °C</h3>
                     <h3><strong>Humedad:</strong> {searchCity.main?.humidity}%</h3>
@@ -153,4 +153,4 @@ function SearchCity({ dateDay, hour }) {
     )
 }
 
-export default SearchCity
+export default SearchCity;
