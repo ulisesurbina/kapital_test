@@ -61,9 +61,9 @@ function FavoritesLocation() {
   };
 
   return (
-    <div className='w-[80%] text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)] flex flex-col m-auto mb-15'>
+    <div className='w-[95%] text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)] flex flex-col m-auto mb-15'>
       <div className='flex justify-between items-center mb-4'>
-        <h2 className='text-[clamp(1.2rem,_1.8rem_+_1vw,_4vw)] italic font-bold'> Lugares favoritos</h2>
+        <h2 className='text-[clamp(1rem,_1.6rem_+_0.8vw,_3.5vw)] italic font-bold'> Lugares favoritos</h2>
         {favorites.length > 0 && (
           <button onClick={clearAllFavorites} className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors'>
             Borrar todos
@@ -83,7 +83,7 @@ function FavoritesLocation() {
             const isExpanded = expandedItems.has(cityId);            
             
             return (
-              <div key={cityId} className='w-full border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-white overflow-hidden'>
+              <div key={cityId} className='w-[80%] sm:w-[90%] md:w-[80%] m-auto border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-white overflow-hidden'>
                 <div 
                   className='flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50 transition-colors'
                   onClick={() => toggleExpanded(cityId)}
@@ -107,19 +107,17 @@ function FavoritesLocation() {
                       ✕
                     </button>
                     <Icon 
-                      icon={isExpanded ? chevronUp : chevronDown} 
-                      width={24} 
-                      height={24} 
-                      className='text-gray-400'
+                      icon={isExpanded ? chevronUp : chevronDown}
+                      className='text-gray-400 text-[clamp(0.8rem,_1.2rem_+_0.8vw,_2vw)]'
                     />
                   </div>
                 </div>
 
                 {isExpanded && (
-                  <div className='border-t border-gray-200 p-4 bg-gray-50'>
-                    <div className='flex justify-between items-center gap-4'>
+                  <div className='border-t border-gray-400 p-4 bg-gray-50'>
+                    <div className='flex flex-col justify-center items-center gap-4'>
                       <div className='space-y-2 flex-1'>
-                        <div className='grid grid-cols-2 gap-x-4 gap-y-1 flex items-center'>
+                        <div className='grid grid-cols-1 gap-x-4 gap-y-1 flex items-center'>
                           <p><strong>Temperatura:</strong> {city.main?.temp}°C</p>
                           <p><strong>Sensación:</strong> {city.main?.feels_like}°C</p>
                           <p><strong>Temperatura Mínima</strong> {city.main?.temp_min}°C <br />
@@ -130,13 +128,11 @@ function FavoritesLocation() {
                           <p><strong>Dirección del viento:</strong> {city.wind.deg}°</p>
                           <p><strong>Estado del tiempo:</strong> {city.weather?.[0]?.description || 'N/A'}</p>
                         </div>
-                        <p>
-                          <strong>Latitud:</strong>  {city.coord.lat}, <strong>Longitud:</strong> {city.coord.lon}
-                        </p>
+                        <p><strong>Latitud:</strong>  {city.coord.lat}, <strong>Longitud:</strong> {city.coord.lon}</p>
                       </div>
                       
-                      <div className='flex flex-col items-center gap-2'>
-                        <figure className='bg-[#32AC90] w-20 h-20 rounded-lg flex items-center justify-center'>
+                      <div className='flex flex-col items-center gap-2 w-[60%]'>
+                        <figure className='bg-[#32AC90] w-[50%] flex items-center justify-center'>
                           <img 
                             className='w-full h-full object-cover rounded-lg' 
                             src={city.weather?.[0]?.icon ? `http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png` : kapital}

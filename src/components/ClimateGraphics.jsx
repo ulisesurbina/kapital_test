@@ -134,13 +134,13 @@ function ClimateGraphics({ keyword }) {
     }, [tempData, chartType]);
 
   return (
-    <div className='w-[48%] flex text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)]'>
+    <div className='w-[100%] sm:w-[80%] md:w-[48%] flex text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)]'>
         <div className='w-full flex flex-col items-center'>
             {loading ? (
                 <p className="my-4 text-gray-600 animate-pulse">Cargando datos del clima...</p>
             ) : (
                 tempData.length > 0 && (
-                    <div>
+                    <div className='w-[100%] sm:w-[80%] md:w-[48%]'>
                         <h2 className='font-semibold my-4 flex justify-center'>
                             Datos climáticos de {keyword}
                         </h2>
