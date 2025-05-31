@@ -132,7 +132,7 @@ function FavoritesLocation() {
                       </div>
                       
                       <div className='flex flex-col items-center gap-2 w-[60%]'>
-                        <figure className='bg-[#32AC90] w-[50%] flex items-center justify-center'>
+                        <figure className='bg-[#32AC90] w-[80%] sm:w-[50%] md:w-[65%] flex items-center justify-center'>
                           <img 
                             className='w-full h-full object-cover rounded-lg' 
                             src={city.weather?.[0]?.icon ? `http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png` : kapital}
