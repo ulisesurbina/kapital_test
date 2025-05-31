@@ -73,8 +73,8 @@ function FavoritesLocation() {
 
       {favorites.length === 0 ? (
         <div className='text-center py-8 text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)]'>
-          <p className=''>No tienes ciudades favoritas aún</p>
-          <p className=''>Busca una ciudad y márcala como favorita</p>
+          <p>No tienes ciudades favoritas aún</p>
+          <p>Busca una ciudad y márcala como favorita</p>
         </div>
       ) : (
         <div className='grid w-full gap-5 grid-cols-1 gap-5 w-full'>
@@ -91,7 +91,7 @@ function FavoritesLocation() {
                   <div className='flex items-center gap-3'>
                     <Icon icon={starFilled} className='text-yellow-400' />
                     <div>
-                      <h3 className=''>{city.name}</h3>
+                      <h3>{city.name}</h3>
                     </div>
                   </div>
                   
@@ -130,7 +130,7 @@ function FavoritesLocation() {
                           <p><strong>Dirección del viento:</strong> {city.wind.deg}°</p>
                           <p><strong>Estado del tiempo:</strong> {city.weather?.[0]?.description || 'N/A'}</p>
                         </div>
-                        <p className=''>
+                        <p>
                           <strong>Latitud:</strong>  {city.coord.lat}, <strong>Longitud:</strong> {city.coord.lon}
                         </p>
                       </div>

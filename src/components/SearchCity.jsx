@@ -133,7 +133,7 @@ function SearchCity({ dateDay, hour }) {
                     </div>
                 </section>
                 <section className='w-full flex justify-between items-center'>
-                    <div className="w-[50%] text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)] flex items-start flex-col gap-2">
+                    <div className="w-[48%] text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)] flex items-start flex-col gap-2">
                         <h3><strong>Ciudad:</strong> {inputValueCity}</h3>
                         <h3><strong>Latitud:</strong> {searchCity.coord?.lat} <br /> <strong>Longitud:</strong> {searchCity.coord?.lon}</h3>
                         <h3><strong>Temperatura:</strong> {searchCity.main?.temp} °C</h3>

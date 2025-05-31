@@ -134,18 +134,18 @@ function ClimateGraphics({ keyword }) {
     }, [tempData, chartType]);
 
   return (
-    <div className='w-[50%] flex text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)]'>
+    <div className='w-[48%] flex text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)]'>
         <div className='w-full flex flex-col items-center'>
             {loading ? (
                 <p className="my-4 text-gray-600 animate-pulse">Cargando datos del clima...</p>
             ) : (
                 tempData.length > 0 && (
                     <div>
-                        <h2 className='font-semibold my-4'>
+                        <h2 className='font-semibold my-4 flex justify-center'>
                             Datos climáticos de {keyword}
                         </h2>
 
-                        <div className="flex gap-4 mb-4">
+                        <div className="flex justify-center gap-4 mb-4">
                             <button
                                 className={`px-4 py-2 rounded ${chartType === 'temperatura' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
                                 onClick={() => setChartType('temperatura')}

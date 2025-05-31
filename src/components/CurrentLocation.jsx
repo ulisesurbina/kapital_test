@@ -87,15 +87,15 @@ function CurrentLocation({ dateDay, hour }) {
             </div>
           )}
           <h2 className='text-[clamp(1.2rem,_1.8rem_+_1vw,_4vw)] italic'><strong>Datos del clima en tu ubicación:</strong></h2>
-          <section className='w-full flex justify-around'>
-            <div className=''>
+          <section className='w-full flex items-center justify-around'>
+            <div>
               <h3><strong>Temperatura:</strong> {weatherData.main?.temp} °C</h3>
               <h3><strong>Sensación térmica:</strong> {weatherData.main?.feels_like} °C</h3>
               <h3><strong>Humedad:</strong> {weatherData.main?.humidity}%</h3>
               <h3><strong>Velocidad del viento:</strong> {weatherData.wind?.speed} m/s</h3>
               <h3><strong>Estado del tiempo:</strong> {weatherData.weather?.[0].description}</h3>
             </div>
-            <figure className='bg-[#32AC90] w-[12%] h-[12%] flex align-center'>
+            <figure className='bg-[#32AC90] w-[12%] h-[12%] flex items-center'>
                 <img className='w-full bg-[#32AC90]' src={`http://openweathermap.org/img/wn/${weatherData.weather?.[0].icon}@2x.png`} alt={weatherData.weather?.[0].description} />
             </figure>
             <div>
