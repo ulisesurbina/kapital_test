@@ -14,22 +14,17 @@ function FavoritesLocation() {
       const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
       setFavorites(storedFavorites);
     };
-    
     loadFavorites();
-    
     const handleFavoritesUpdate = (e) => {
       setFavorites(e.detail.favorites);
     };
-
     const handleStorageChange = (e) => {
       if (e.key === 'favorites') {
         loadFavorites();
       }
     };
-    
     window.addEventListener('favoritesUpdated', handleFavoritesUpdate);
     window.addEventListener('storage', handleStorageChange);
-    
     return () => {
       window.removeEventListener('favoritesUpdated', handleFavoritesUpdate);
       window.removeEventListener('storage', handleStorageChange);
@@ -41,7 +36,6 @@ function FavoritesLocation() {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setFavorites(updatedFavorites);
     
-    // Disparar el evento personalizado para notificar a otros componentes
     window.dispatchEvent(new CustomEvent('favoritesUpdated', {
       detail: { favorites: updatedFavorites }
     }));
@@ -50,7 +44,7 @@ function FavoritesLocation() {
   const clearAllFavorites = () => {
     localStorage.removeItem('favorites');
     setFavorites([]);
-    setExpandedItems(new Set()); // Limpiar items expandidos
+    setExpandedItems(new Set());
     window.dispatchEvent(new CustomEvent('favoritesUpdated', {
       detail: { favorites: [] }
     }));
@@ -67,38 +61,35 @@ function FavoritesLocation() {
   };
 
   return (
-    <div className='w-full flex flex-col p-4'>
+    <div className='w-[80%] text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)] flex flex-col m-auto mb-15'>
       <div className='flex justify-between items-center mb-4'>
-        <h2 className=''>Favoritos</h2>
+        <h2 className='text-[clamp(1.2rem,_1.8rem_+_1vw,_4vw)] italic font-bold'> Lugares favoritos</h2>
         {favorites.length > 0 && (
-          <button 
-            onClick={clearAllFavorites}
-            className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors'
-          >
+          <button onClick={clearAllFavorites} className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors'>
             Borrar todos
           </button>
         )}
       </div>
 
       {favorites.length === 0 ? (
-        <div className='text-center py-8'>
+        <div className='text-center py-8 text-[clamp(0.8rem,_1.2rem_+_0.8vw,_1.2vw)]'>
           <p className=''>No tienes ciudades favoritas aún</p>
           <p className=''>Busca una ciudad y márcala como favorita</p>
         </div>
       ) : (
-        <div className='space-y-3'>
+        <div className='grid w-full gap-5 grid-cols-1 gap-5 w-full'>
           {favorites.map((city, index) => {
             const cityId = city.id || index;
             const isExpanded = expandedItems.has(cityId);            
             
             return (
-              <div key={cityId} className='border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-white overflow-hidden'>
+              <div key={cityId} className='w-full border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-white overflow-hidden'>
                 <div 
                   className='flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50 transition-colors'
                   onClick={() => toggleExpanded(cityId)}
                 >
                   <div className='flex items-center gap-3'>
-                    <Icon icon={starFilled} width={20} height={20} className='text-yellow-400' />
+                    <Icon icon={starFilled} className='text-yellow-400' />
                     <div>
                       <h3 className=''>{city.name}</h3>
                     </div>

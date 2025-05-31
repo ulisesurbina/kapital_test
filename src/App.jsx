@@ -8,7 +8,7 @@ function App() {
   let hour = String(date.getHours()).padStart(2, "0") + ":" + String(date.getMinutes()).padStart(2, "0");
 
   return (
-    <div className='w-full flex flex-col bg-[#E6F5F2]'>
+    <div className='w-full h-full flex flex-col bg-[#E6F5F2]'>
       <SearchCity dateDay={dateDay} hour={hour} />
       <CurrentLocation dateDay={dateDay} hour={hour} />
       <FavoritesLocation />
