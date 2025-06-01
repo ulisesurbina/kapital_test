@@ -155,4 +155,4 @@ function FavoritesLocation() {
   )
 }
 
-export default FavoritesLocation
+export default FavoritesLocation;

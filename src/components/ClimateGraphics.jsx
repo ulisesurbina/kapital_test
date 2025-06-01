@@ -174,4 +174,4 @@ function ClimateGraphics({ keyword }) {
   )
 }
 
-export default ClimateGraphics
+export default ClimateGraphics;

@@ -1,7 +1,7 @@
 # Desarrollo Frontend de obtención de datos del Clima Consumiendo una API
 
 ## Descripción
-* Inicialmente se tiene que crear una cuenta en la API (https://openweathermap.org/api) en la cual se obtendra una API KEY que servirá para poder utilizar las llamadas en en plan gratuito [actualmente se tiene mi API KEY en uso para pruebas en producción].
+* Inicialmente se tiene que crear una cuenta en la API (https://openweathermap.org/api) en la cual se obtendra una API KEY que servirá para poder utilizar las llamadas en en plan gratuito [actualmente se tiene mi API KEY en uso para pruebas en producción], la API permite 60 llamadas/minuto en plan gratuito.
 * Este proyecto implementa una aplicación web completa con arquitectura React/JSX, que incluye componentes reutilizables, gestión de estado, y utilidades para el manejo de activos estáticos. La aplicación está diseñada para mostrar el estado del clima en su posición actual, de las ciudades que se busquen en el input y muestra las gráficas de información referida a esa locación de los 5 días posteriores a la búsqueda.
 * Para poder detectar su ubicación actual debe permitir el servicio de geolocalización que aparece al cargar la página.
 * Para marcar/desmarcar una ciudad o país como favorito se debe hacer click en la estrella ⭐, por lo que se guardaran en la sección de favoritos mediante el local storage, en el cual se tiene las opción de poder eliminar.
